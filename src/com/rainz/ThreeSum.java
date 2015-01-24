@@ -46,7 +46,7 @@ public class ThreeSum {
                     } while (leftIdx < num.length && num[leftIdx] == left);
                     do {
                         --rightIdx;
-                    } while (rightIdx >= 0 && num[rightIdx] == right);
+                    } while (rightIdx >= leftIdx && num[rightIdx] == right);
                 } else if (sum2 < target) {
                     ++leftIdx;
                 } else {
