@@ -71,7 +71,6 @@ public class MergeTwoSortedLists {
             } else {
                 tail.next = l2;
                 l2 = l2.next;
-
             }
             tail = tail.next;
         }
