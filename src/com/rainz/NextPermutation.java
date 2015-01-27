@@ -40,8 +40,9 @@ public class NextPermutation {
         for (int i = num.length - 2; i >=0; --i) {
             if (num[i] < num[i+1]) {
                 // Found the first decrease, which will be our lowest "swappable" digit.
-                // Now find the (first) smallest to the right that's greater than current
-                // Eg, 958766, need to swap 5 (i=1) with the *first* 6 (i=4) ==> 968756
+                // Now find the smallest to the right that's greater than current
+                // Eg, 958766, need to swap 5 (i=1) with 6 (i=4) ==> 968756
+                // Doesn't matter which 6, since we'll sort the rest later.
                 int minIdx = i+1;
                 for (int j = i+2; j < num.length; ++j) {
                     if (num[j] > num[i] && num[j] < num[minIdx])
