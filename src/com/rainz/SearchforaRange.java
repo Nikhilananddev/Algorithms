@@ -47,7 +47,6 @@ public class SearchforaRange {
             else
                 end = mid;
         }
-        System.out.println("Found target at " + found);
 
         // Search left for first appearance between begin and mid
         int left = found;
@@ -66,7 +65,6 @@ public class SearchforaRange {
             else
                 begin = mid;
         }
-        System.out.println("Found left at " + answer[0]);
 
         int right = found;
         while (right <= end) {
@@ -84,7 +82,6 @@ public class SearchforaRange {
             else
                 end = mid;
         }
-        System.out.println("Found right at " + answer[1]);
 
         return answer;
     }
