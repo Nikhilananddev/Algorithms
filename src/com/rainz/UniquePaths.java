@@ -21,12 +21,12 @@ public class UniquePaths {
             for (int col = n - 2; col >= 0; --col)
                 dp[row][col] = dp[row+1][col] + dp[row][col+1];
         }
-        for (int[] r: dp) {
+        /*for (int[] r: dp) {
             for (int x: r) {
                 System.out.printf("%d ", x);
             }
             System.out.println();
-        }
+        }*/
         return dp[0][0];
     }
 }
