@@ -19,6 +19,30 @@ public class SearchinRotatedSortedArray {
 
     public static int search(int[] A, int target) {
         int begin = 0, end = A.length - 1; // end is inclusive
+        while (begin <= end) {
+            int mid = (begin + end) / 2;
+            if (A[mid] == target)
+                return mid;
+            if (A[mid] >= A[begin]) {
+                // mid is on left (the higher) branch
+                if (target < A[mid] && target >= A[begin])
+                    end = mid-1;
+                else
+                    begin = mid+1;
+            } else {
+                // mid is on right (the lower) branch
+                if (target > A[mid] && target <= A[end])
+                    begin = mid+1;
+                else
+                    end = mid-1;
+            }
+            // The case where begin to end is sorted is covered by either of the above cases.
+        }
+        return -1;
+    }
+
+    public static int search_old(int[] A, int target) {
+        int begin = 0, end = A.length - 1; // end is inclusive
         if (A.length == 1)
             return (A[0] == target ? 0 : -1);
         while (begin < end) {
