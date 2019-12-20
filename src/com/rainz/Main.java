@@ -1,9 +1,11 @@
 package com.rainz;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
-        SequentialDigits.test(args);
+        CombinationSumIV.test(args);
     }
 
     public static <T> void printArray(T[] a) {
@@ -42,9 +44,20 @@ public class Main {
         System.out.println("}");
     }
 
-    // Print list of list
-    // result.forEach( value -> {value.forEach( v -> System.out.print( ""+v+",")); System.out.println(); });
 
-    // int[][] dirs = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+    public static <T> void printList(List<T> l) {
+        System.out.print("{");
+        l.forEach( v -> System.out.print( ""+v+",") );
+        System.out.println("}");
+    }
+
+    public static <T> void printList2D(List<List<T>> l) {
+        System.out.println("{");
+        //l.forEach( value -> {value.forEach( v -> System.out.print( ""+v+",")); System.out.println(); });
+        l.forEach ( v -> printList(v));
+        System.out.println("}");
+    }
+    // final int[][] dirs = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+    // final int[][] dirs8 = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
 
 }
