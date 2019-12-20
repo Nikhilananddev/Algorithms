@@ -5,7 +5,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        CombinationSumIV.test(args);
+        FindAllAnagramsinaString.test(args);
     }
 
     public static <T> void printArray(T[] a) {
