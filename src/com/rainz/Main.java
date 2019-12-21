@@ -5,7 +5,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        FindAllAnagramsinaString.test(args);
+        KokoEatingBananas.test(args);
     }
 
     public static <T> void printArray(T[] a) {
@@ -57,7 +57,7 @@ public class Main {
         l.forEach ( v -> printList(v));
         System.out.println("}");
     }
-    // final int[][] dirs = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+    // final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     // final int[][] dirs8 = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
 
 }
