@@ -1,11 +1,12 @@
 package com.rainz;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        KokoEatingBananas.test(args);
+        LongestIncreasingSubsequence.test(args);
     }
 
     public static <T> void printArray(T[] a) {
@@ -44,7 +45,6 @@ public class Main {
         System.out.println("}");
     }
 
-
     public static <T> void printList(List<T> l) {
         System.out.print("{");
         l.forEach( v -> System.out.print( ""+v+",") );
@@ -57,6 +57,31 @@ public class Main {
         l.forEach ( v -> printList(v));
         System.out.println("}");
     }
+
+    public static List<List<Integer>> buildList2D(int input[][]) {
+        List<List<Integer>> ll = new ArrayList<>();
+        for (int r = 0; r < input.length; ++r) {
+            List<Integer> l = new ArrayList<>();
+            for (int c = 0; c < input[r].length; ++c) {
+                l.add(input[r][c]);
+            }
+            ll.add(l);
+        }
+        return ll;
+    }
+
+    public static <T> List<List<T>> buildList2D(T input[][]) {
+        List<List<T>> ll = new ArrayList<>();
+        for (int r = 0; r < input.length; ++r) {
+            List<T> l = new ArrayList<>();
+            for (int c = 0; c < input[r].length; ++c) {
+                l.add(input[r][c]);
+            }
+            ll.add(l);
+        }
+        return ll;
+    }
+
     // final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     // final int[][] dirs8 = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
 
