@@ -1,12 +1,14 @@
 package com.rainz;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Main {
 
     public static void main(String[] args) {
-        GasStation.test(args);
+        PathSumIII.test(args);
     }
 
     public static class TreeNode {
@@ -14,6 +16,42 @@ public class Main {
         TreeNode left;
         TreeNode right;
         TreeNode(int x) { val = x; }
+
+        public static TreeNode buildTree(String s) {
+            String[] parts = s.split(",");
+            if (parts.length == 0)
+                return null;
+            if (parts.length == 1)
+                return (parts[0].equals("null") ? null : new TreeNode(Integer.parseInt(parts[0])));
+            /*if ((parts.length & (parts.length+1)) != 0) {
+                System.err.println("Unable to build tree with length="+parts.length);
+                return null;
+            }*/
+            int idx = 0;
+            TreeNode root = new TreeNode(Integer.parseInt(parts[idx++]));
+            Queue<List<TreeNode>> workQ = new LinkedList<>();
+            List<TreeNode> prev = new ArrayList<>();
+            prev.add(root);
+            workQ.add(prev);
+            while (!workQ.isEmpty() && idx < parts.length) {
+                List<TreeNode> curr = new ArrayList<>();
+                for (TreeNode node: prev) {
+                    if (node != null) {
+                        node.left = buildTree(parts[idx++]);
+                        curr.add(node.left);
+                        node.right = buildTree(parts[idx++]);
+                        curr.add(node.right);
+                    } else {
+                        curr.add(null);
+                        curr.add(null);
+                        idx += 2;
+                    }
+                }
+                prev = curr;
+            }
+            return root;
+        }
+
         private static void toStringInOrderHelper(TreeNode root, StringBuilder sb) {
             if (root == null) {
                 sb.append("null,");
