@@ -6,7 +6,31 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        LongestIncreasingSubsequence.test(args);
+        GasStation.test(args);
+    }
+
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+        private static void toStringInOrderHelper(TreeNode root, StringBuilder sb) {
+            if (root == null) {
+                sb.append("null,");
+                return;
+            }
+            sb.append(""+root.val+",");
+            toStringInOrderHelper(root.left, sb);
+            toStringInOrderHelper(root.right, sb);
+        }
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append('{');
+            toStringInOrderHelper(this, sb);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     public static <T> void printArray(T[] a) {
@@ -17,6 +41,13 @@ public class Main {
     }
 
     public static void printArray(int[] a) {
+        System.out.print("{");
+        for (int i = 0; i < a.length; ++i)
+            System.out.print(""+a[i]+",");
+        System.out.println("}");
+    }
+
+    public static void printArray(boolean[] a) {
         System.out.print("{");
         for (int i = 0; i < a.length; ++i)
             System.out.print(""+a[i]+",");
@@ -35,6 +66,17 @@ public class Main {
     }
 
     public static void printArray2D(int[][] a) {
+        System.out.println("{");
+        for (int i = 0; i < a.length; ++i) {
+            System.out.print("{");
+            for (int j = 0; j < a[i].length; ++j)
+                System.out.print(""+a[i][j]+",");
+            System.out.println("},");
+        }
+        System.out.println("}");
+    }
+
+    public static void printArray2D(boolean[][] a) {
         System.out.println("{");
         for (int i = 0; i < a.length; ++i) {
             System.out.print("{");
