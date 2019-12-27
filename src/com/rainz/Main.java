@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
-        PathSumIII.test(args);
+        SlidingWindowMaximum.test(args);
     }
 
     public static class TreeNode {
@@ -92,6 +92,13 @@ public class Main {
         System.out.println("}");
     }
 
+    public static void printArray(char[] a) {
+        System.out.print("{");
+        for (int i = 0; i < a.length; ++i)
+            System.out.print(""+a[i]+",");
+        System.out.println("}");
+    }
+
     public static <T> void printArray2D(T[][] a) {
         System.out.println("{");
         for (int i = 0; i < a.length; ++i) {
@@ -115,6 +122,17 @@ public class Main {
     }
 
     public static void printArray2D(boolean[][] a) {
+        System.out.println("{");
+        for (int i = 0; i < a.length; ++i) {
+            System.out.print("{");
+            for (int j = 0; j < a[i].length; ++j)
+                System.out.print(""+a[i][j]+",");
+            System.out.println("},");
+        }
+        System.out.println("}");
+    }
+
+    public static void printArray2D(char[][] a) {
         System.out.println("{");
         for (int i = 0; i < a.length; ++i) {
             System.out.print("{");
