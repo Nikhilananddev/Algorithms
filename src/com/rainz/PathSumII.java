@@ -7,9 +7,9 @@ import java.util.List;
 
 public class PathSumII {
     public static void test(String args[]) {
-        TreeNode input = Main.TreeNode.buildTree("5,4,8,11,null,13,4,7,2,null,null,null,null,null,1");
+        TreeNode input = Main.TreeNode.buildTreeLevelOrder("5,4,8,11,null,13,4,7,2,null,null,null,null,null,1");
         Main.printList2D(pathSum(input, 22));
-        TreeNode input2 = Main.TreeNode.buildTree("1,2,null");
+        TreeNode input2 = Main.TreeNode.buildTreeLevelOrder("1,2,null");
         Main.printList2D(pathSum(input2, 1));
     }
 

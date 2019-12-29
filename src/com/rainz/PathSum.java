@@ -4,9 +4,9 @@ import com.rainz.Main.TreeNode;
 
 public class PathSum {
     public static void test(String args[]) {
-        TreeNode input = Main.TreeNode.buildTree("5,4,8,11,null,13,4,7,2,null,null,null,null,null,1");
+        TreeNode input = Main.TreeNode.buildTreeLevelOrder("5,4,8,11,null,13,4,7,2,null,null,null,null,null,1");
         System.out.println(hasPathSum(input, 22));
-        TreeNode input2 = Main.TreeNode.buildTree("1,2,null");
+        TreeNode input2 = Main.TreeNode.buildTreeLevelOrder("1,2,null");
         System.out.println(hasPathSum(input2, 1));
     }
 

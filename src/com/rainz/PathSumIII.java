@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class PathSumIII {
     public static void test(String args[]) {
-        TreeNode input = Main.TreeNode.buildTree("10,5,-3,3,2,null,11,3,-2,null,1,null,null,null,null");
+        TreeNode input = Main.TreeNode.buildTreeLevelOrder("10,5,-3,3,2,null,11,3,-2,null,1,null,null,null,null");
         System.out.println(pathSum(input, 8));
-        TreeNode input2 = Main.TreeNode.buildTree("5,4,8,11,null,13,4,7,2,null,null,5,1,null,null");
+        TreeNode input2 = Main.TreeNode.buildTreeLevelOrder("5,4,8,11,null,13,4,7,2,null,null,5,1,null,null");
         System.out.println(pathSum(input2, 22));
     }
 

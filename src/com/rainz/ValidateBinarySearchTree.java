@@ -4,10 +4,10 @@ import com.rainz.Main.TreeNode;
 
 public class ValidateBinarySearchTree {
     public static void test(String args[]) {
-        TreeNode input1 = Main.TreeNode.buildTree("2,1,3");
+        TreeNode input1 = Main.TreeNode.buildTreeLevelOrder("2,1,3");
         //System.out.println(input1.toString());
         System.out.println(isValidBST(input1));
-        TreeNode input2 = Main.TreeNode.buildTree("5,1,4,null,null,3,6");
+        TreeNode input2 = Main.TreeNode.buildTreeLevelOrder("5,1,4,null,null,3,6");
         //System.out.println(input2.toString());
         System.out.println(isValidBST(input2));
     }
