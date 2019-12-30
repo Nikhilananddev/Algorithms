@@ -5,17 +5,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.rainz.Main.Interval;
+
 /**
  * Created by Yu on 2/8/2015.
  */
 public class MergeIntervals {
-    static class Interval {
-        int start;
-        int end;
-        Interval() { start = 0; end = 0; }
-        Interval(int s, int e) { start = s; end = e; }
-    }
-
     public static void test(String args[]) {
         int[][] test = {{15,18},{1,3},{2,6},{8,10}};
         List<Interval> input = new ArrayList<Interval>();

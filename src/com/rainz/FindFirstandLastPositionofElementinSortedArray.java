@@ -3,7 +3,15 @@ package com.rainz;
 /**
  * Created by Yu on 1/31/2015.
  */
-public class SearchforaRange {
+
+/*
+ * Leetcode 34
+ * Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+ * Your algorithm's runtime complexity must be in the order of O(log n).
+ * If the target is not found in the array, return [-1, -1].
+ */
+
+public class FindFirstandLastPositionofElementinSortedArray {
     public static void test(String args[]) {
         //int[] test = {1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 7};
         //int[] test = {1, 2, 2, 2, 4, 4, 4, 4, 4, 9, 9, 9, 10};

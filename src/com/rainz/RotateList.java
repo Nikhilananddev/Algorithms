@@ -1,56 +1,13 @@
 package com.rainz;
 
+import com.rainz.Main.ListNode;
+
 /**
  * Created by Yu on 2/8/2015.
  */
 public class RotateList {
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-
-        public static void printList(ListNode n) {
-            while (n != null) {
-                System.out.print("" + n.val + " ");
-                n = n.next;
-            }
-            System.out.println();
-        }
-
-        public static ListNode buildList(int count) {
-            ListNode head = null;
-            ListNode tail = null;
-            for (int i = 1; i <= count; ++i) {
-                ListNode curr = new ListNode(i);
-                if (head == null)
-                    head = curr;
-                else
-                    tail.next = curr;
-                tail = curr;
-            }
-            return head;
-        }
-
-        public static ListNode buildList(int[] array) {
-            ListNode head = null;
-            ListNode tail = null;
-            for (int i = 0; i < array.length; ++i) {
-                ListNode curr = new ListNode(array[i]);
-                if (head == null)
-                    head = curr;
-                else
-                    tail.next = curr;
-                tail = curr;
-            }
-            return head;
-        }
-    }
-
     public static void test(String args[]) {
-        ListNode test = ListNode.buildList(5);
+        ListNode test = ListNode.buildListFromRange(1, 5);
         ListNode.printList(rotateRight(test, 2));
     }
 

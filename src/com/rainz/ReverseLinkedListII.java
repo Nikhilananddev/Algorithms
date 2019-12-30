@@ -1,17 +1,17 @@
 package com.rainz;
 
+import com.rainz.Main.ListNode;
+
 /**
  * Created by Yu on 8/21/2016.
  */
 public class ReverseLinkedListII {
     public static void test(String args[]) {
+        int[] input = {1,2,3,4,5};
+        ListNode l = ListNode.buildList(input);
+        ListNode.printList(reverseBetween(l, 2, 4));
+    }
 
-    }
-    public static class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) { val = x; }
-    }
     public static ListNode reverseBetween(ListNode head, int m, int n) {
         int idx = 0;
         ListNode dummy = new ListNode(0);

@@ -1,54 +1,25 @@
 package com.rainz;
 
+import com.rainz.Main.ListNode;
+
 /**
  * Created by Yu on 1/24/2015.
  */
 public class RemoveNthNodeFromEndofList {
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-
-        public static void printList(ListNode n) {
-            while (n != null) {
-                System.out.print("" + n.val + " ");
-                n = n.next;
-            }
-            System.out.println();
-        }
-
-        public static ListNode buildList(int count) {
-            ListNode head = null;
-            ListNode tail = null;
-            for (int i = 1; i <= count; ++i) {
-                ListNode curr = new ListNode(i);
-                if (head == null)
-                    head = curr;
-                else
-                    tail.next = curr;
-                tail = curr;
-            }
-            return head;
-        }
-    }
-
      public static void test(String args[]) {
-         ListNode test = ListNode.buildList(3);
+         ListNode test = ListNode.buildListFromRange(1, 3);
          ListNode removed = removeNthFromEnd(test, 1);
          ListNode.printList(removed);
-         test = ListNode.buildList(3);
+         test = ListNode.buildListFromRange(1, 3);
          removed = removeNthFromEnd(test, 2);
          ListNode.printList(removed);
-         test = ListNode.buildList(3);
+         test = ListNode.buildListFromRange(1, 3);
          removed = removeNthFromEnd(test, 3);
          ListNode.printList(removed);
-         test = ListNode.buildList(3);
+         test = ListNode.buildListFromRange(1, 3);
          removed = removeNthFromEnd(test, 4);
          ListNode.printList(removed);
-         test = ListNode.buildList(1);
+         test = ListNode.buildListFromRange(1, 1);
          removed = removeNthFromEnd(test, 1);
          ListNode.printList(removed);
     }

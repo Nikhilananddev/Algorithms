@@ -1,14 +1,13 @@
 package com.rainz;
 
+import com.rainz.Main.ListNode;
+
 public class PartitionList {
 	public static void test(String args[]) {
+	    int[] input = {1,4,3,2,5,2};
+	    ListNode.printList(partition(ListNode.buildList(input), 3));
 	}
-	
-	 public static class ListNode {
-		 int val;
-		 ListNode next;
-		 ListNode(int x) { val = x; }
-	 }
+
 	 public static ListNode partition(ListNode head, int x) {
 		 // Partition 1
          ListNode dummy1 = new ListNode(x-1);

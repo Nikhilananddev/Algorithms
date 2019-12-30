@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
-        ConstructBinaryTreefromPreorderandInorderTraversal.test(args);
+        RemoveNthNodeFromEndofList.test(args);
     }
 
     public static class TreeNode {
@@ -91,6 +91,7 @@ public class Main {
             toStringInOrderHelper(root.left, sb);
             toStringInOrderHelper(root.right, sb);
         }
+
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
@@ -99,6 +100,76 @@ public class Main {
             sb.append('}');
             return sb.toString();
         }
+    }
+
+    public static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+
+        public static ListNode buildListFromInt(int val) {
+            ListNode result = new ListNode(0); // dummy
+            if (val == 0)
+                return result;
+            ListNode curr = result;
+            while (val > 0) {
+                curr.next = new ListNode(val % 10);
+                curr = curr.next;
+                val /= 10;
+            }
+            return result.next;
+        }
+
+        public static ListNode buildListFromRange(int start, int len) {
+            ListNode head = null;
+            ListNode tail = null;
+            for (int i = start; i < start+len; ++i) {
+                ListNode curr = new ListNode(i);
+                if (head == null)
+                    head = curr;
+                else
+                    tail.next = curr;
+                tail = curr;
+            }
+            return head;
+        }
+        public static ListNode buildList(int[] array) {
+            ListNode head = null;
+            ListNode tail = null;
+            for (int i = 0; i < array.length; ++i) {
+                ListNode curr = new ListNode(array[i]);
+                if (head == null)
+                    head = curr;
+                else
+                    tail.next = curr;
+                tail = curr;
+            }
+            return head;
+        }
+
+        public static void printList(ListNode l) {
+            if (l != null) {
+                System.out.print(l.val);
+                l = l.next;
+            }
+            while (l != null) {
+                System.out.print("->");
+                System.out.print(l.val);
+                l = l.next;
+            }
+            System.out.println();
+        }
+    }
+
+
+    public static class Interval {
+        int start;
+        int end;
+        Interval() { start = 0; end = 0; }
+        Interval(int s, int e) { start = s; end = e; }
     }
 
     public static <T> void printArray(T[] a) {
