@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
-        DivideArrayinSetsofKConsecutiveNumbers.test(args);
+        ConstructBinaryTreefromPreorderandInorderTraversal.test(args);
     }
 
     public static class TreeNode {
@@ -33,10 +33,10 @@ public class Main {
                 List<TreeNode> curr = new ArrayList<>();
                 for (TreeNode node: prev) {
                     if (node != null) {
-                        node.left = buildTreeLevelOrder(parts[idx++]);
+                        node.left = idx < parts.length ? buildTreeLevelOrder(parts[idx++]) : null;
                         if (node.left != null)
                             curr.add(node.left);
-                        node.right = buildTreeLevelOrder(parts[idx++]);
+                        node.right = idx < parts.length ? buildTreeLevelOrder(parts[idx++]) : null;
                         if (node.right != null)
                             curr.add(node.right);
                     }
