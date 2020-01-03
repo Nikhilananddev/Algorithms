@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
-        ReverseWordsinaString.test(args);
+        IntersectionofTwoLinkedLists.test(args);
     }
 
     public static class TreeNode {
@@ -148,6 +148,17 @@ public class Main {
                 tail = curr;
             }
             return head;
+        }
+
+        public static ListNode appendList(ListNode a, ListNode b) {
+            ListNode last = null;
+            for (ListNode l = a; l != null; l = l.next) {
+                last = l;
+            }
+            if (last == null)
+                return b;
+            last.next = b;
+            return a;
         }
 
         public static void printList(ListNode l) {
