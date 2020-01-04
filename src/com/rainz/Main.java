@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
-        IntersectionofTwoLinkedLists.test(args);
+        DecodedStringatIndex.test(args);
     }
 
     public static class TreeNode {
