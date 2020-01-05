@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Queue;
 
 public class Main {
-
     public static void main(String[] args) {
-        DecodedStringatIndex.test(args);
+        AllNodesDistanceKinBinaryTree.test(args);
     }
 
     public static class TreeNode {
@@ -80,6 +79,14 @@ public class Main {
                 prev = curr;
             }
             return root;
+        }
+
+        public static TreeNode findFirst(TreeNode root, int val) {
+            if (root == null) return null;
+            if (root.val == val) return root;
+            TreeNode n = findFirst(root.left, val);
+            if (n != null) return n;
+            return findFirst(root.right, val);
         }
 
         private static void toStringInOrderHelper(TreeNode root, StringBuilder sb) {
@@ -175,6 +182,19 @@ public class Main {
         }
     }
 
+    public static class Graph {
+        public static class Node {
+            public int val;
+            public List<Node> neighbors;
+
+            public Node() {}
+
+            public Node(int _val,List<Node> _neighbors) {
+                val = _val;
+                neighbors = _neighbors;
+            }
+        }
+    }
 
     public static class Interval {
         int start;
