@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
-        AllNodesDistanceKinBinaryTree.test(args);
+        MaximumBinaryTree.test(args);
     }
 
     public static class TreeNode {
@@ -95,14 +95,16 @@ public class Main {
                 return;
             }
             sb.append(""+root.val+",");
-            toStringInOrderHelper(root.left, sb);
-            toStringInOrderHelper(root.right, sb);
+            if (root.left != null || root.right != null) {
+                toStringInOrderHelper(root.left, sb);
+                toStringInOrderHelper(root.right, sb);
+            }
         }
 
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
-            sb.append('{');
+            sb.append("Infix: {");
             toStringInOrderHelper(this, sb);
             sb.append('}');
             return sb.toString();
