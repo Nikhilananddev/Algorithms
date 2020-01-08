@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
-        MaximumBinaryTree.test(args);
+        FindtheDuplicateNumber.test(args);
     }
 
     public static class TreeNode {
