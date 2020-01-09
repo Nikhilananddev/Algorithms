@@ -1,5 +1,8 @@
 package com.rainz;
 
+/*
+ * You are given coins of different denominations and a total amount of money. Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.
+ */
 public class CoinChange2 {
     public static void test(String args[]) {
         int[] input1 = {1, 2, 5};
@@ -8,6 +11,7 @@ public class CoinChange2 {
         System.out.println(change(3, input2));
     }
 
+    /* Note: it's possible to optimize this to a 1D DP on amount. */
     public static int change(int amount, int[] coins) {
         if (coins.length == 0)
             return amount == 0 ? 1 : 0;

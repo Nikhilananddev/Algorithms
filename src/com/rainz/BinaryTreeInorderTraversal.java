@@ -13,9 +13,11 @@ public class BinaryTreeInorderTraversal {
     }
     /*
      * Non-recursive in-order traversal:
-     * For each node push onto stack, then go to left
-     * If null, time to pop node from stack, print it, then go to right
-     * Note: when right is null and you pop, you'll get the node above its parent, as expected.
+     * For each node: push onto stack, then keep going to left until null.
+     * When we see null, time to pop node from stack, print it, then go to right
+     * Note: when we see null,
+     * - If this is left child, popping the stack will return root;
+     * - If this is right child, popping the stack will return parent of root;
      */
     public static List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
