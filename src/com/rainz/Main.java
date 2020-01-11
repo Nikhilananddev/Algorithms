@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
-        MaximumGap.test(args);
+        CheapestFlightsWithinKStops.test(args);
     }
 
     public static class TreeNode {
@@ -21,7 +21,7 @@ public class Main {
             if (parts.length == 0)
                 return null;
             if (parts.length == 1)
-                return (parts[0].equals("null") ? null : new TreeNode(Integer.parseInt(parts[0])));
+                return (parts[0].equals("null") || parts[0].length()==0 ? null : new TreeNode(Integer.parseInt(parts[0])));
             int idx = 0;
             TreeNode root = new TreeNode(Integer.parseInt(parts[idx++]));
             Queue<List<TreeNode>> workQ = new LinkedList<>();
@@ -170,6 +170,7 @@ public class Main {
             return a;
         }
 
+        @Deprecated
         public static void printList(ListNode l) {
             if (l != null) {
                 System.out.print(l.val);
@@ -181,6 +182,20 @@ public class Main {
                 l = l.next;
             }
             System.out.println();
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            ListNode l = this;
+            sb.append(l.val);
+            l = l.next;
+            while (l != null) {
+                sb.append("->");
+                sb.append(l.val);
+                l = l.next;
+            }
+            return sb.toString();
         }
     }
 

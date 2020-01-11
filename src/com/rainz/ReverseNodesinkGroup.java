@@ -1,68 +1,25 @@
 package com.rainz;
 
+import com.rainz.Main.ListNode;
+
 /**
  * Created by Yu on 1/25/2015.
  */
 public class ReverseNodesinkGroup {
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-
-        public static void printList(ListNode n) {
-            while (n != null) {
-                System.out.print("" + n.val + " ");
-                n = n.next;
-            }
-            System.out.println();
-        }
-
-        public static ListNode buildList(int count) {
-            ListNode head = null;
-            ListNode tail = null;
-            for (int i = 1; i <= count; ++i) {
-                ListNode curr = new ListNode(i);
-                if (head == null)
-                    head = curr;
-                else
-                    tail.next = curr;
-                tail = curr;
-            }
-            return head;
-        }
-
-        public static ListNode buildList(int[] array) {
-            ListNode head = null;
-            ListNode tail = null;
-            for (int i = 0; i < array.length; ++i) {
-                ListNode curr = new ListNode(array[i]);
-                if (head == null)
-                    head = curr;
-                else
-                    tail.next = curr;
-                tail = curr;
-            }
-            return head;
-        }
-    }
-
     public static void test(String args[]) {
-        ListNode test = ListNode.buildList(10);
+        ListNode test = ListNode.buildListFromRange(1, 10);
         ListNode.printList(reverseKGroup(test, 3));
-        test = ListNode.buildList(11);
+        test = ListNode.buildListFromRange(1, 11);
         ListNode.printList(reverseKGroup(test, 4));
-        test = ListNode.buildList(1);
+        test = ListNode.buildListFromRange(1, 1);
         ListNode.printList(reverseKGroup(test, 2));
-        test = ListNode.buildList(2);
+        test = ListNode.buildListFromRange(1, 2);
         ListNode.printList(reverseKGroup(test, 2));
-        test = ListNode.buildList(16);
+        test = ListNode.buildListFromRange(1, 16);
         ListNode.printList(reverseKGroup(test, 4));
-        test = ListNode.buildList(14);
+        test = ListNode.buildListFromRange(1, 14);
         ListNode.printList(reverseKGroup(test, 1));
-        test = ListNode.buildList(25);
+        test = ListNode.buildListFromRange(1, 25);
         ListNode.printList(reverseKGroup(test, 7));
     }
 
