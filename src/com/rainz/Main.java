@@ -1,13 +1,10 @@
 package com.rainz;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        MaximumLevelSumofaBinaryTree.test(args);
+        BombEnemy.test(args);
     }
 
     public static class TreeNode {

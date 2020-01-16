@@ -1,9 +1,6 @@
 package com.rainz;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Yu on 2/7/2015.
@@ -11,11 +8,16 @@ import java.util.Set;
 public class PermutationsII {
     public static void test(String args[]) {
         int[] test = {1, 1, 2};
-        List<List<Integer>> answer = permuteUnique(test);
-        System.out.println(answer);
+        List<List<Integer>> ans = permuteUnique(test);
+        Main.printList2D(ans);
+        System.out.println("" + ans.size() + " entries");
+        int[] test2 = {-1,2,0,-1,1,0,1};
+        ans = permuteUnique(test2);
+        Main.printList2D(ans);
+        System.out.println("" + ans.size() + " entries");
     }
 
-    protected static void helper(int[] num, int start, List<Integer> perm, List<List<Integer>> answer) {
+    protected static void helperOld(int[] num, int start, List<Integer> perm, List<List<Integer>> answer) {
         if (start >= num.length) {
             List<Integer> sol = new ArrayList<Integer>();
             sol.addAll(perm);
@@ -32,16 +34,46 @@ public class PermutationsII {
             num[start] = numI;
             num[i] = numStart;
             perm.add(numI);
-            helper(num, start + 1, perm, answer);
+            helperOld(num, start + 1, perm, answer);
             perm.remove(perm.size()-1);
             num[start] = numStart;
             num[i] = numI;
         }
     }
-    public static List<List<Integer>> permuteUnique(int[] num) {
+    public static List<List<Integer>> permuteUniqueOld(int[] num) {
         List<List<Integer>> answer = new ArrayList<List<Integer>>();
         List<Integer> perm = new ArrayList<Integer>();
-        helper(num, 0, perm, answer);
+        helperOld(num, 0, perm, answer);
         return answer;
+    }
+
+
+    protected static void helper(int[] nums, int start, List<List<Integer>> ans) {
+        if (start >= nums.length) {
+            List<Integer> sol = new ArrayList<>();
+            for (int n: nums)
+                sol.add(n);
+            ans.add(sol);
+            return;
+        }
+        int numStart = nums[start];
+        Set<Integer> seen = new HashSet<>();
+        for (int i = start; i < nums.length; ++i) {
+            int numI = nums[i];
+            if (seen.contains(numI))
+                continue;
+            seen.add(numI);
+            nums[start] = numI;
+            nums[i] = numStart;
+            helper(nums, start + 1, ans);
+            nums[start] = numStart;
+            nums[i] = numI;
+        }
+    }
+
+    public static List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        helper(nums, 0, ans);
+        return ans;
     }
 }

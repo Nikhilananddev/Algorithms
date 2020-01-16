@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/*
+ * Given an array equations of strings that represent relationships between variables, each string equations[i] has length 4 and takes one of two different forms: "a==b" or "a!=b".  Here, a and b are lowercase letters (not necessarily different) that represent one-letter variable names.
+ * Return true if and only if it is possible to assign integers to variable names so as to satisfy all the given equations.
+ */
+
 public class SatisfiabilityOfEqualityEquations {
     public static void test(String args[]) {
         String[] input = {"a==b","b!=a"};
