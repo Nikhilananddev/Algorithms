@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-        LongestSubstringwithAtMostKDistinctCharacters.test(args);
+        FindKClosestElements.test(args);
     }
 
     public static class TreeNode {
@@ -220,6 +220,67 @@ public class Main {
         int end;
         Interval() { start = 0; end = 0; }
         Interval(int s, int e) { start = s; end = e; }
+    }
+
+    public static class QuadTree {
+        public static class Node {
+            public boolean val;
+            public boolean isLeaf;
+            public Node topLeft;
+            public Node topRight;
+            public Node bottomLeft;
+            public Node bottomRight;
+
+            public Node() {}
+
+            public Node(boolean _val,boolean _isLeaf,Node _topLeft,Node _topRight,Node _bottomLeft,Node _bottomRight) {
+                val = _val;
+                isLeaf = _isLeaf;
+                topLeft = _topLeft;
+                topRight = _topRight;
+                bottomLeft = _bottomLeft;
+                bottomRight = _bottomRight;
+            }
+
+            protected static void toStringHelper(Node n, StringBuilder sb) {
+                if (n.isLeaf) {
+                    sb.append(n.val);
+                    sb.append(',');
+                    return;
+                }
+                sb.append('{');
+                toStringHelper(n.topLeft, sb);
+                toStringHelper(n.topRight, sb);
+                toStringHelper(n.bottomLeft, sb);
+                toStringHelper(n.bottomRight, sb);
+                sb.append('}');
+            }
+
+            protected static Node buildHelper(int[][] grid, int startR, int startC, int len) {
+                if (len == 1)
+                    return new Node(grid[startR][startC] == 1, true, null, null, null, null);
+                len /= 2;
+                Node tl = buildHelper(grid, startR, startC, len);
+                Node tr = buildHelper(grid, startR, startC+len, len);
+                Node bl = buildHelper(grid, startR+len, startC, len);
+                Node br = buildHelper(grid, startR+len, startC+len, len);
+                if (tl.isLeaf && tr.isLeaf && bl.isLeaf && br.isLeaf &&
+                        tl.val == tr.val && tr.val == bl.val && bl.val == br.val)
+                    return new Node(tl.val, true, null, null, null, null);
+                return new Node(false, false, tl, tr, bl, br);
+            }
+
+            public static Node buildTreeFromGrid(int[][] grid) {
+                return buildHelper(grid, 0, 0, grid.length);
+            }
+
+            @Override
+            public String toString() {
+                StringBuilder sb = new StringBuilder();
+                toStringHelper(this, sb);
+                return sb.toString();
+            }
+        };
     }
 
     public static <T> void printArray(T[] a) {
