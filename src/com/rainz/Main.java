@@ -2,14 +2,9 @@ package com.rainz;
 
 import java.util.*;
 
-/*
- * Given a Binary Search Tree (BST) with root node root, and a target value V, split the tree into two subtrees where one subtree has nodes that are all smaller or equal to the target value, while the other subtree has all nodes that are greater than the target value.  It's not necessarily the case that the tree contains a node with value V.
- * Additionally, most of the structure of the original tree should remain.  Formally, for any child C with parent P in the original tree, if they are both in the same subtree after the split, then node C should still have the parent P.
- * You should output the root TreeNode of both subtrees after splitting, in any order.
- */
 public class Main {
     public static void main(String[] args) {
-        FindKClosestElements.test(args);
+        TossStrangeCoins.test(args);
     }
 
     public static class TreeNode {
@@ -311,6 +306,13 @@ public class Main {
         System.out.println("}");
     }
 
+    public static void printArray(double[] a) {
+        System.out.print("{");
+        for (int i = 0; i < a.length; ++i)
+            System.out.print(""+a[i]+",");
+        System.out.println("}");
+    }
+
     public static <T> void printArray2D(T[][] a) {
         System.out.println("{");
         for (int i = 0; i < a.length; ++i) {
@@ -345,6 +347,17 @@ public class Main {
     }
 
     public static void printArray2D(char[][] a) {
+        System.out.println("{");
+        for (int i = 0; i < a.length; ++i) {
+            System.out.print("{");
+            for (int j = 0; j < a[i].length; ++j)
+                System.out.print(""+a[i][j]+",");
+            System.out.println("},");
+        }
+        System.out.println("}");
+    }
+
+    public static void printArray2D(double[][] a) {
         System.out.println("{");
         for (int i = 0; i < a.length; ++i) {
             System.out.print("{");
