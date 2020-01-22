@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        ValidMountainArray.test(args);
+        BinaryTreeVerticalOrderTraversal.test(args);
     }
 
     public static class TreeNode {
