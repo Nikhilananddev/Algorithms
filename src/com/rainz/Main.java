@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        DiameterofBinaryTree.test(args);
+        StatisticsfromaLargeSample.test(args);
     }
 
     public static class TreeNode {
@@ -86,23 +86,23 @@ public class Main {
             return findFirst(root.right, val);
         }
 
-        private static void toStringInOrderHelper(TreeNode root, StringBuilder sb) {
+        private static void toStringPrefixHelper(TreeNode root, StringBuilder sb) {
             if (root == null) {
                 sb.append("null,");
                 return;
             }
             sb.append(""+root.val+",");
             if (root.left != null || root.right != null) {
-                toStringInOrderHelper(root.left, sb);
-                toStringInOrderHelper(root.right, sb);
+                toStringPrefixHelper(root.left, sb);
+                toStringPrefixHelper(root.right, sb);
             }
         }
 
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
-            sb.append("Infix: {");
-            toStringInOrderHelper(this, sb);
+            sb.append("Prefix: {");
+            toStringPrefixHelper(this, sb);
             sb.append('}');
             return sb.toString();
         }
@@ -381,7 +381,14 @@ public class Main {
         System.out.println("}");
     }
 
-    public static List<List<Integer>> buildList2D(int input[][]) {
+    public static List<Integer> buildList(int[] input) {
+        List<Integer> res = new ArrayList<>();
+        for (int n: input)
+            res.add(n);
+        return res;
+    }
+
+    public static List<List<Integer>> buildList2D(int[][] input) {
         List<List<Integer>> ll = new ArrayList<>();
         for (int r = 0; r < input.length; ++r) {
             List<Integer> l = new ArrayList<>();
@@ -393,7 +400,7 @@ public class Main {
         return ll;
     }
 
-    public static <T> List<List<T>> buildList2D(T input[][]) {
+    public static <T> List<List<T>> buildList2D(T[][] input) {
         List<List<T>> ll = new ArrayList<>();
         for (int r = 0; r < input.length; ++r) {
             List<T> l = new ArrayList<>();
