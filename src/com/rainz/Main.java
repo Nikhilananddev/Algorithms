@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        BreakaPalindrome.test(args);
+        OccurrencesAfterBigram.test(args);
     }
 
     public static class TreeNode {
