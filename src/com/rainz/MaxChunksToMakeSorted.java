@@ -12,6 +12,11 @@ public class MaxChunksToMakeSorted {
         System.out.println(maxChunksToSorted(input2));
     }
 
+    /*
+     * Solution has to do with i<->arr[i] mapping.
+     * If arr[i] > i, we have to extend chunk range to at least arr[i].
+     * In other words, index of right end of chunk K is the max in the chunk
+     */
     public static int maxChunksToSorted(int[] arr) {
         int result = 0;
         int chunkStart = -1;
