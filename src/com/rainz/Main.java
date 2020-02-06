@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        MissingNumber.test(args);
+        ConvertIntegertotheSumofTwoNoZeroIntegers.test(args);
     }
 
     public static class TreeNode {
@@ -414,5 +414,6 @@ public class Main {
 
     // final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     // final int[][] dirs8 = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
+    // final int[][] dirs = new int[][] {{2,1},{2,-1},{-2,1},{-2,-1},{1,2},{-1,2},{1,-2},{-1,-2}}; // knight moves
 
 }

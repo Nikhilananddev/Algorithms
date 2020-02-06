@@ -15,6 +15,25 @@ public class WordBreak {
     }
 
     public static boolean wordBreak(String s, List<String> wordDict) {
+        int L = s.length();
+        boolean[] dp = new boolean[L + 1];
+        Set<String> dictSet = new HashSet<>(wordDict);
+        dp[0] = true;
+        for (int end = 1; end <= L; ++end) {
+            for (int start = 0; start < end; ++start) {
+                String w = s.substring(start, end);
+                if (!dictSet.contains(w))
+                    continue;
+                if (dp[start]) {
+                    dp[end] = true;
+                    break;
+                }
+            }
+        }
+        return dp[L];
+    }
+
+    public static boolean wordBreakOldPassed(String s, List<String> wordDict) {
         boolean[] dp = new boolean[s.length()+1];
         Set<String> dictSet = new HashSet<>();
         dictSet.addAll(wordDict);
