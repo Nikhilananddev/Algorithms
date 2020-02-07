@@ -29,6 +29,9 @@ public class ValidTicTacToeState {
     /*
      * There could be at most one more Xs than Os.
      * There can't be two or more 3-of-a-kind unless these two are on the same side and intersect with each other
+     *
+     * Update: actually it's not necessary to check multiple same-3 for Xs, since 6 Xs will fail the X/O counts check
+     * and intersecting same-3s for X are valid.
      */
     public static boolean validTicTacToe(String[] board) {
         int Xs = 0, Os = 0;
