@@ -23,7 +23,7 @@ public class RegularExpressionMatching {
         System.out.println(isMatch("", "")); // true
     }
 
-    private static boolean helper(String s,int sIdx, String p,int pIdx) {
+    private static boolean helperOld(String s, int sIdx, String p, int pIdx) {
         while (sIdx < s.length() && pIdx < p.length()) {
             char sChar = s.charAt(sIdx), pChar = p.charAt(pIdx);
             boolean match = (sChar == pChar || pChar == '.');
@@ -35,7 +35,7 @@ public class RegularExpressionMatching {
                 continue;
             }
             // First pretend X* is empty, compare the pattern after X*
-            if (helper(s, sIdx, p, pIdx + 2))
+            if (helperOld(s, sIdx, p, pIdx + 2))
                 return true;
             // Now if the current sChar is not X, and since the remainder of s
             // doesn't match the portion of p after X*, match fails.
@@ -53,6 +53,41 @@ public class RegularExpressionMatching {
         if (pIdx < p.length())
             return false;
         return true;
+    }
+    /*
+     * Outline:
+     * Case 1: p (pattern) is empty, s must be empty
+     * Case 2: 2nd char in p is not * (or p has only 1 char), just compare and move on
+     * Case 3: 2nd char in p is *, need to try matching x* with multiple x's in s. Here x is 1st char in p
+     *   Case 3.1: there is no x in S
+     *   Case 3.2: more than one x's in S. Use a for loop.
+     */
+
+    private static boolean helper(String s, int sIdx, String p, int pIdx) {
+        // Case 1: p (pattern) reaches end, then s must also reaches end
+        // Note the other way is not necessarily true: if s reaches end, p could still have "a*", for example
+        if (pIdx >= p.length())
+            return sIdx == s.length();
+
+        char pChar = p.charAt(pIdx); // first char in p at current position
+
+        // Case 2: if 2nd char in p is not '*' (or p has only 1 char left), just compare the two chars and continue
+        if (pIdx == p.length() - 1 || p.charAt(pIdx+1) != '*')
+            return sIdx < s.length() && (s.charAt(sIdx) == pChar || pChar == '.') && helper(s, sIdx+1, p, pIdx+1);
+
+        // Case 3: now 2nd char in p is '*', need to try skipping multiple pChars in s,
+        // Case 3.1: first try if there is no pChar in s at this position. Examples: ABCDEF vs ABCx*DEF
+        if (helper(s, sIdx, p, pIdx+2))
+            return true;
+
+        // Case 3.2: try multiple pChars in s. Example: ABCxDEF vs ABCx*DEF, ABCxxDEF vs ABCx*DEF,
+        int idx = sIdx;
+        while (idx < s.length() && (s.charAt(idx) == pChar || pChar == '.')) {
+            if (helper(s, idx+1, p, pIdx+2))
+                return true;
+            ++idx;
+        }
+        return false;
     }
 
     public static boolean isMatch(String s,String p) {

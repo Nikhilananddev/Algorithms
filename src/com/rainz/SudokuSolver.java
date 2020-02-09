@@ -40,21 +40,25 @@ public class SudokuSolver {
         }
         char curr = board[row][col];
         if (curr != '.') {
+            // curr cell is already filled, just go to next cell
             return helper(board, nextRow, nextCol);
         }
         boolean[] seen = new boolean[9];
         int rowGrid = row - row % 3, colGrid = col - col % 3;
         for (int i = 0; i < dimension; ++i) {
+            // Check this row
             if (i != row) {
                 char c = board[i][col];
                 if (c != '.')
                     seen[c - '1'] = true;
             }
+            // Check this column
             if (i != col) {
                 char c = board[row][i];
                 if (c != '.')
                     seen[c - '1'] = true;
             }
+            // Check each of 3x3 cells
             int rGrid = rowGrid + i / 3, cGrid = colGrid + i % 3;
             if (rGrid != row && cGrid != col) {
                 char c = board[rGrid][cGrid];
@@ -63,6 +67,7 @@ public class SudokuSolver {
             }
         }
         for (int i = 0; i < seen.length; ++i) {
+            // Try each number not in row, col, or 3x3 grid
             if (seen[i])
                 continue;
             board[row][col] = (char)('1' + i);
