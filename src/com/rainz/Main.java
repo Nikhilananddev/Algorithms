@@ -1,11 +1,10 @@
 package com.rainz;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        CircularArrayLoop.test(args);
+        OneThreeTwoPattern.test(args);
     }
 
     public static class TreeNode {
