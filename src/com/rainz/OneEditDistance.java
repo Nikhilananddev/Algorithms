@@ -17,6 +17,7 @@ public class OneEditDistance {
         System.out.println(isOneEditDistance("", "A"));
         System.out.println(isOneEditDistance("abc", "bcd"));
     }
+    // You can also just check length difference. It'll make the logical simpler.
     public static boolean isOneEditDistance(String s, String t) {
         int sIdx = 0, tIdx = 0;
         int diff = 0;

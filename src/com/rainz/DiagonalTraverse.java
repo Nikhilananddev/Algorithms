@@ -13,7 +13,43 @@ public class DiagonalTraverse {
                         };
         Main.printArray(findDiagonalOrder(input));
     }
+
+
     public static int[] findDiagonalOrder(int[][] matrix) {
+        int R = matrix.length;
+        if (R == 0)
+            return new int[0];
+        int C = matrix[0].length;
+        final int[][] dirs = {{-1,1}, {1,-1}};
+        int d = 0;
+        int totalCount = R*C;
+        int[] ans = new int[totalCount];
+        int r = 0, c = 0;
+        for (int idx = 0; idx < totalCount; ++idx) {
+            ans[idx] = matrix[r][c];
+            r += dirs[d][0];
+            c += dirs[d][1];
+            if (r >= R) {
+                r = R - 1; c += 2;
+                d = 1 - d;
+            }
+            if (c >= C) {
+                c = C - 1; r += 2;
+                d = 1 - d;
+            }
+            if (r < 0) {
+                r = 0;
+                d = 1 - d;
+            }
+            if (c < 0) {
+                c = 0;
+                d = 1 - d;
+            }
+        }
+        return ans;
+    }
+
+    public static int[] findDiagonalOrderOld(int[][] matrix) {
         int R = matrix.length;
         if (R == 0)
             return new int[0];

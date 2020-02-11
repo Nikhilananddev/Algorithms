@@ -14,8 +14,10 @@ public class SingleNumberII {
     /*
      * For each of the 32 bits, count # appearances of 1's. Bits with 1 appearing 3k+1 times are part of answer.
      * Use 3 masks. "one": 1 means on this bit, 1 appeared 3k+1 times; "two": 3k+2 times; "three": 3k times.
+     * Update: another way to do it (easier to understand) is:
+     * - Sum the bits in same positions for all the numbers and take modulo with 3.
+     * - The 1-bits for which sum is not multiple of 3, are the bits of number with single occurrence.
      */
-
     public static int singleNumber(int[] nums) {
         int ones = 0, twos = 0, threes = 0;
         for (int i = 0; i < nums.length; i++) {

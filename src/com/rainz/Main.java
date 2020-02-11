@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        OneThreeTwoPattern.test(args);
+        TwentyFourGame.test(args);
     }
 
     public static class TreeNode {
