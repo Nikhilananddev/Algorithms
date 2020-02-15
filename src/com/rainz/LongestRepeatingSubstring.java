@@ -17,7 +17,7 @@ public class LongestRepeatingSubstring {
         if (L == 0)
             return 0;
         int ans = 0;
-        int[][] dp = new int[L+1][L+1]; // [start1][start2];
+        int[][] dp = new int[L+1][L+1]; // [end1][end2];
         for (int i = 0; i < L; ++i) {
             for (int j = i + 1; j < L; ++j) {
                 if (S.charAt(i) == S.charAt(j)) {

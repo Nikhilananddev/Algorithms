@@ -35,14 +35,45 @@ public class MedianOfTwoSortedArrays {
         }
     }
 
-    public static double findMedianSortedArrays(int A[], int B[]) {
-        int total = A.length + B.length;
+    public static double findMedianSortedArraysFast(int nums1[], int nums2[]) {
+        int total = nums1.length + nums2.length;
         int mid = total / 2 + 1;
         if (total % 2 == 1) {
-            return findkth(A, 0, A.length, B, 0, B.length, mid);
+            return findkth(nums1, 0, nums1.length, nums2, 0, nums2.length, mid);
         } else {
-            return (findkth(A, 0, A.length, B, 0, B.length, mid) +
-                     findkth(A, 0, A.length, B, 0, B.length, mid-1))/2.0;
+            return (findkth(nums1, 0, nums1.length, nums2, 0, nums2.length, mid) +
+                     findkth(nums1, 0, nums1.length, nums2, 0, nums2.length, mid-1))/2.0;
         }
+    }
+
+    public static double findMedianSortedArrays2ptr(int nums1[], int nums2[]) {
+        int total = nums1.length + nums2.length;
+        int mid1 = (total-1) / 2;
+        int mid2 = mid1;
+        if (total % 2 == 0)
+            ++mid2;
+        int mid1Val = Integer.MAX_VALUE, mid2Val = Integer.MAX_VALUE;
+        int aIdx = 0, bIdx = 0;
+        while (aIdx < nums1.length || bIdx < nums2.length) {
+            int a = aIdx < nums1.length ? nums1[aIdx] : Integer.MAX_VALUE;
+            int b = bIdx < nums2.length ? nums2[bIdx] : Integer.MAX_VALUE;
+            int num = Math.min(a, b);
+            if (aIdx + bIdx == mid1)
+                mid1Val = num;
+            if (aIdx + bIdx == mid2) {
+                mid2Val = num;
+                break;
+            }
+            if (a <= b)
+                ++aIdx;
+            else
+                ++bIdx;
+        }
+        return (mid1Val + mid2Val) / 2.0;
+    }
+
+    public static double findMedianSortedArrays(int nums1[], int nums2[]) {
+        //return findMedianSortedArraysFast(nums1, nums2);
+        return findMedianSortedArrays2ptr(nums1, nums2);
     }
 }

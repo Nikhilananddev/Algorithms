@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        FrogJump.test(args);
+        DesignHashSet.test(args);
     }
 
     public static class TreeNode {
@@ -12,7 +12,9 @@ public class Main {
         TreeNode left;
         TreeNode right;
         TreeNode(int x) { val = x; }
-
+        TreeNode(int _val, TreeNode _left, TreeNode _right) {
+            val = _val; left = _left; right = _right;
+        }
         public static TreeNode buildTree(String s) {
             String[] parts = s.split(",");
             if (parts.length == 0)
