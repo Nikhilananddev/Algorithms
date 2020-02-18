@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         //com.rainz.misc.ShortestPath.test(args);
-        MinimumNumberofStepstoMakeTwoStringsAnagram.test(args);
+        BulbSwitcher.test(args);
     }
 
     public static class TreeNode {
