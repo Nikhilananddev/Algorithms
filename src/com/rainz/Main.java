@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        //com.rainz.misc.ShortestPath.test(args);
-        BulbSwitcher.test(args);
+        //com.rainz.misc.Swap9Matrix.test(args);
+        RegularExpressionMatching.test(args);
     }
 
     public static class TreeNode {

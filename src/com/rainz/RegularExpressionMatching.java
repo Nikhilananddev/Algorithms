@@ -63,6 +63,10 @@ public class RegularExpressionMatching {
      *   Case 3.2: more than one x's in S. Use a for loop.
      */
 
+    private static boolean charMatch(char s, char p) {
+        return s == p || p == '.';
+    }
+
     private static boolean helper(String s, int sIdx, String p, int pIdx) {
         // Case 1: p (pattern) reaches end, then s must also reaches end
         // Note the other way is not necessarily true: if s reaches end, p could still have "a*", for example
@@ -73,7 +77,7 @@ public class RegularExpressionMatching {
 
         // Case 2: if 2nd char in p is not '*' (or p has only 1 char left), just compare the two chars and continue
         if (pIdx == p.length() - 1 || p.charAt(pIdx+1) != '*')
-            return sIdx < s.length() && (s.charAt(sIdx) == pChar || pChar == '.') && helper(s, sIdx+1, p, pIdx+1);
+            return sIdx < s.length() && charMatch(s.charAt(sIdx), pChar) && helper(s, sIdx+1, p, pIdx+1);
 
         // Case 3: now 2nd char in p is '*', need to try skipping multiple pChars in s,
         // Case 3.1: first try if there is no pChar in s at this position. Examples: ABCDEF vs ABCx*DEF
@@ -82,7 +86,7 @@ public class RegularExpressionMatching {
 
         // Case 3.2: try multiple pChars in s. Example: ABCxDEF vs ABCx*DEF, ABCxxDEF vs ABCx*DEF,
         int idx = sIdx;
-        while (idx < s.length() && (s.charAt(idx) == pChar || pChar == '.')) {
+        while (idx < s.length() && charMatch(s.charAt(idx), pChar)) {
             if (helper(s, idx+1, p, pIdx+2))
                 return true;
             ++idx;

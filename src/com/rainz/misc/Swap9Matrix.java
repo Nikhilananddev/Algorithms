@@ -57,14 +57,6 @@ public class Swap9Matrix {
         return res;
     }
 
-    public static int find9(String s) {
-        for (int i = 0; i < s.length(); ++i) {
-            if (s.charAt(i) == '9') {
-                return i;
-            }
-        }
-        return -1;
-    }
     private static class BFSNode {
         String state;
         BFSNode parent;
@@ -95,9 +87,8 @@ public class Swap9Matrix {
                 }
                 if (visited.contains(s))
                     continue;
-                //System.out.println("Visiting " + visitCount + ": " + s);
                 visited.add(s);
-                int idx9 = find9(s);
+                int idx9 = s.indexOf('9');
                 int[] coord9 = idx1To2(idx9);
                 int r9 = coord9[0], c9 = coord9[1];
                 for (int[] d : dirs) {
