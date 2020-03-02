@@ -18,7 +18,33 @@ public class CousinsinBinaryTree {
         System.out.println(isCousins(TreeNode.buildTree("1,2,3,null,4"), 2, 3));
     }
 
+    // DFS solution
+    private static void helper(TreeNode root, TreeNode parent, int x, int y, int level, int[] levels, TreeNode[] parents) {
+        if (root == null)
+            return;
+        if (root.val == x) {
+            parents[0] = parent;
+            levels[0] = level;
+        } else if (root.val == y) {
+            parents[1] = parent;
+            levels[1] = level;
+        }
+        if (levels[0] >= 0 && levels[1] >= 0) {
+            return;
+        }
+        helper(root.left, root,  x, y, level+1, levels, parents);
+        helper(root.right, root,  x, y, level+1, levels, parents);
+    }
+
     public static boolean isCousins(TreeNode root, int x, int y) {
+        int[] levels = { -1, -2 };
+        TreeNode[] parents = { null, null };
+        helper(root, null, x, y, 0, levels, parents);
+        return (levels[0] == levels[1] && parents[0] != parents[1]);
+    }
+
+    // BFS/level order solution
+    public static boolean isCousinsBFS(TreeNode root, int x, int y) {
         List<TreeNode> currLevel = new ArrayList<>();
         currLevel.add(root);
         int xLevel = -1, yLevel = -1;

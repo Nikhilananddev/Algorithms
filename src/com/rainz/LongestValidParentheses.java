@@ -8,19 +8,73 @@ import java.util.Stack;
  */
 public class LongestValidParentheses {
     public static void test(String args[]) {
-        System.out.println(longestValidParentheses("()"));
-        System.out.println(longestValidParentheses("(()"));
-        System.out.println(longestValidParentheses("()(()"));
-        System.out.println(longestValidParentheses("()()"));
-        System.out.println(longestValidParentheses(")()())"));
-        System.out.println(longestValidParentheses("(((())))"));
-        System.out.println(longestValidParentheses(")))((()))()"));
-        System.out.println(longestValidParentheses(")()()))))((()))())))()"));
-        System.out.println(longestValidParentheses(")()()}}((()))())))()))(((())))((()))"));
-        System.out.println(longestValidParentheses("(())()(()(("));
+//        System.out.println(longestValidParentheses("()")); // 2
+//        System.out.println(longestValidParentheses("(()")); // 2
+//        System.out.println(longestValidParentheses("()(()")); // 2
+//        System.out.println(longestValidParentheses("()()")); // 4
+//        System.out.println(longestValidParentheses(")()())")); // 4
+//        System.out.println(longestValidParentheses("(((())))")); // 8
+//        System.out.println(longestValidParentheses(")))((()))()")); // 8
+//        System.out.println(longestValidParentheses(")()()))))((()))())))()")); // 8
+//        System.out.println(longestValidParentheses(")()()}}((()))())))()))(((())))((()))")); // 14
+//        System.out.println(longestValidParentheses("(())()(()((")); // 6
+        System.out.println(longestValidParentheses("(()()")); // 4
     }
 
     public static int longestValidParentheses(String s) {
+        return longestValidParenthesesNew(s);
+    }
+
+    public static int longestValidParenthesesNew(String s) {
+        int ans = 0;
+        int start = 0;
+        Stack<Integer> indices = new Stack<>();
+        for (int i = 0; i < s.length(); ++i) {
+            char c = s.charAt(i);
+            if (c == '(')
+                indices.push(i);
+            else {
+                // Here, c is ')'
+                if (indices.isEmpty()) {
+                    /*
+                     * See diagram below.
+                     * ()())(...
+                     *     i^
+                     * Here at i, the extra ')' "terminated" the previous valid parentheses block.
+                     * So future valid blocks will have to start at i+1 (marked by '^' in the diagram)
+                     */
+                    start = i + 1;
+                    continue;
+                }
+                int len = 0;
+                indices.pop(); // pop the matching '('
+                if (indices.isEmpty()) {
+                    /*
+                     * See diagram below
+                     * ()())()()...
+                     *      ^  i
+                     * At i, all '('s have been matched.
+                     * So valid parentheses will be between i and start (marked by '^')
+                     */
+                    len = i - start + 1;
+                } else {
+                    /*
+                     * See diagram below
+                     * ()())()()((()()...
+                     *          ^*   i
+                     * At i, not all '('s have been matched.
+                     * So valid parentheses block will be from i to (but not including) prev unmatched '(' (marked by '*').
+                     * Here start is again marked by '^'
+                     */
+                    len = i - indices.peek(); // len from i to outer level
+                }
+                if (len > ans)
+                    ans = len;
+            }
+        }
+        return ans;
+    }
+    public static int longestValidParenthesesOldPass(String s) {
         int longest = 0;
         // Use positive numbers for lengths, negative for count of '('
         Stack<Integer> stk = new Stack<Integer>();

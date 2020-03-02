@@ -21,6 +21,12 @@ public class TaskScheduler {
             if (histo[i] > 0)
                 pq.offer(i);
         }
+
+        /*
+         * Note: there's a way to avoid using waitQ:
+         * Let cycle = n + 1. In the loop, extract up to "cycle" jobs every time.
+         */
+
         Queue<Integer> waitQ = new LinkedList<>();
         for (int i = 0; i < n; ++i)
             waitQ.offer(null);

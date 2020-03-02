@@ -16,6 +16,7 @@ public class ReorganizeString {
     }
 
     public static String reorganizeString(String S) {
+        // Note: we could use an int array of 26/256 instead of a HashMap.
         Map<Character, Integer> freqs = new HashMap<>();
         for (int i = 0; i < S.length(); ++i) {
             char c = S.charAt(i);
@@ -32,6 +33,13 @@ public class ReorganizeString {
         for (Map.Entry<Character, Integer> entry: freqs.entrySet()) {
             pq.add(entry);
         }
+
+        /*
+         * Note: a better way to do this is to actually take 2 entries at a time out of PQ
+         * These 2 entries (A & B) are guaranteed to have different numbers. Decrement both and put them back.
+         * Even if next time they are still the top two, they will show up as A & B, because we decremented both by 1.
+         * But, in order to do this, you must guarantee no single letter appeared more than (n+1)/2 times.
+         */
         char lastChar = 0;
         while (!pq.isEmpty()) {
             Map.Entry<Character, Integer> entry = pq.remove();

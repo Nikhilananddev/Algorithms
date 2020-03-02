@@ -4,16 +4,16 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        //com.rainz.misc.Swap9Matrix.test(args);
-        RegularExpressionMatching.test(args);
+        //com.rainz.misc.AllCousinsBinaryTree.test(args);
+        MinimumNumberOfArrowsToBurstBalloons.test(args);
     }
 
     public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-        TreeNode(int _val, TreeNode _left, TreeNode _right) {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int x) { val = x; }
+        public TreeNode(int _val, TreeNode _left, TreeNode _right) {
             val = _val; left = _left; right = _right;
         }
         public static TreeNode buildTree(String s) {
@@ -112,9 +112,9 @@ public class Main {
     }
 
     public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
+        public int val;
+        public ListNode next;
+        public ListNode(int x) {
             val = x;
             next = null;
         }
@@ -214,8 +214,8 @@ public class Main {
     }
 
     public static class Interval {
-        int start;
-        int end;
+        public int start;
+        public int end;
         Interval() { start = 0; end = 0; }
         Interval(int s, int e) { start = s; end = e; }
     }

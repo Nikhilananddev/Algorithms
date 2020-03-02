@@ -12,6 +12,11 @@ public class IsGraphBipartite {
         int[][] input2 = {{1,2,3}, {0,2}, {0,1,3}, {0,2}};
         System.out.println(isBipartite(input2));
     }
+    /*
+     * Main idea is if two nodes are connected, they must be in opposite sides
+     * So we use dfs to put each node into either set 1 or set 2.
+     * If there is a conflict (a node was put into set 1 but now also set 2), the graph is not bipartite.
+     */
     private static boolean dfs(int[][] graph, int node, int set, int[] sets) {
         if (sets[node] == 0)
             sets[node] = set;
