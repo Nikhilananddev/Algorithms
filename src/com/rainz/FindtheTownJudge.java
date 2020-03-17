@@ -50,7 +50,7 @@ public class FindtheTownJudge {
         if (p1 <= N) {
             // Verify p1 is judge
             boolean isJudge = true;
-            for (int i = 1; i < N && isJudge; ++i) {
+            for (int i = 1; i <= N && isJudge; ++i) {
                 if (i == p1)
                     continue;
                 isJudge &= (!trustMap[p1][i] && trustMap[i][p1]);
