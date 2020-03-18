@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         //com.rainz.misc.AllCousinsBinaryTree.test(args);
-        NumberofIslandsII.test(args);
+        NumberofConnectedComponentsinanUndirectedGraph.test(args);
     }
 
     public static class TreeNode {
