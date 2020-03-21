@@ -2,6 +2,10 @@ package com.rainz;
 
 import java.util.Stack;
 
+/*
+ * Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes), write a function to find the number of connected components in an undirected graph.
+ */
+
 public class NumberofConnectedComponentsinanUndirectedGraph {
     public static void test(String args[]) {
         int[][] input1 = {{0, 1}, {1, 2}, {3, 4}};

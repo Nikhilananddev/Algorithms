@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         //com.rainz.misc.AllCousinsBinaryTree.test(args);
-        NumberofConnectedComponentsinanUndirectedGraph.test(args);
+        AndroidUnlockPatterns.test(args);
     }
 
     public static class TreeNode {
