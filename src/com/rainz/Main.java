@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         //com.rainz.misc.AllCousinsBinaryTree.test(args);
-        NestedListWeightSum.test(args);
+        ValidWordAbbreviation.test(args);
     }
 
     public static class TreeNode {
