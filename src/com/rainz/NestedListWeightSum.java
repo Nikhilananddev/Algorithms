@@ -1,5 +1,7 @@
 package com.rainz;
 
+import com.rainz.Main.NestedInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,55 +32,6 @@ public class NestedListWeightSum {
         n21.add(n31);
         input2.add(n21);
         System.out.println(depthSum(input2));
-    }
-
-    private static class NestedInteger {
-        // Constructor initializes an empty nested list.
-        public NestedInteger() {
-            _list = new ArrayList<>();
-            _integer = null;
-        }
-
-        // Constructor initializes a single integer.
-        public NestedInteger(int value) {
-            _integer = value;
-            _list = null;
-        }
-
-        // @return true if this NestedInteger holds a single integer, rather than a nested list.
-        public boolean isInteger() {
-            return _integer != null;
-        }
-
-        // @return the single integer that this NestedInteger holds, if it holds a single integer
-        // Return null if this NestedInteger holds a nested list
-        public Integer getInteger() {
-            return _integer;
-        }
-
-        // Set this NestedInteger to hold a single integer.
-        public void setInteger(int value) {
-            _list = null;
-            _integer = value;
-        }
-
-        // Set this NestedInteger to hold a nested list and adds a nested integer to it.
-        public void add(NestedInteger ni) {
-            if (_list == null) {
-                _list = new ArrayList<>();
-                _integer = null;
-            }
-            _list.add(ni);
-        }
-
-        // @return the nested list that this NestedInteger holds, if it holds a nested list
-        // Return null if this NestedInteger holds a single integer
-        public List<NestedInteger> getList() {
-            return _list;
-        }
-
-        private List<NestedInteger> _list;
-        private Integer _integer;
     }
 
     private static int compute(NestedInteger ni, int level) {
